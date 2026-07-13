@@ -1,0 +1,1 @@
+Welcome to my C++ Tasks repository! This repository is a collection of programming tasks, lab exercises, and assignments completed as part of my C++ development training. It covers core concepts ranging from basic syntax and memory management to advanced object-oriented programming.
