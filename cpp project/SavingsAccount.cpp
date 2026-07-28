@@ -57,3 +57,4 @@ string SavingsAccount::saveData() const
         << balance;
 
     return ss.str();
+}
