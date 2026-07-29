@@ -1,36 +1,43 @@
 /*******************************************************************************
  * File        : CheckingAccount.h
- * Author      : samar salah 
- * Date        : 28/07/2026
+ * Author      : samar salah
+ * Date        : 29/07/2026
  * Description : Header file for the CheckingAccount class, derived from Account.
  *******************************************************************************/
 
 #pragma once
 
 #include "Account.h"
-#include <string>
-
-using namespace std;
 
  /*******************************************************************************
   * Class       : CheckingAccount
   * Description : Represents a checking account object derived from the Account base class.
   *******************************************************************************/
-class CheckingAccount : public Account
-{
+class CheckingAccount : public Account {
 public:
     /*******************************************************************************
      * Function    : CheckingAccount
      * Description : Constructor to initialize a CheckingAccount instance.
      *
      * Parameters  :
-     *   id      - Unique identifier for the account.
-     *   owner   - Name of the account holder.
-     *   balance - Initial balance amount.
+     *   i - Unique identifier for the account.
+     *   n - Account holder's name.
+     *   b - Initial balance amount.
      *
      * Returns     : None.
      *******************************************************************************/
-    CheckingAccount(string id, string owner, double balance);
+    CheckingAccount(int i, string n, double b);
+
+    /*******************************************************************************
+     * Function    : withdraw
+     * Description : Withdraws a specified amount from the checking account.
+     *
+     * Parameters  :
+     *   amount - The monetary amount to withdraw.
+     *
+     * Returns     : void
+     *******************************************************************************/
+    void withdraw(double amount);
 
     /*******************************************************************************
      * Function    : getType
@@ -40,15 +47,7 @@ public:
      *
      * Returns     : string - The string representing the account type.
      *******************************************************************************/
-    string getType() const override;
-
-    /*******************************************************************************
-     * Function    : saveData
-     * Description : Formats and returns the checking account data for saving/storage.
-     *
-     * Parameters  : None.
-     *
-     * Returns     : string - Formatted string containing account details.
-     *******************************************************************************/
-    string saveData() const override;
+    string getType();
 };
+
+
