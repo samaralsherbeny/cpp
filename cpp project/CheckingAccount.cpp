@@ -1,6 +1,6 @@
 /*******************************************************************************
  * File        : CheckingAccount.cpp
- * Author      : Your Name
+ * Author      : samar salah 
  * Date        : 28/07/2026
  * Description : Implementation of the CheckingAccount class member functions.
  *******************************************************************************/
