@@ -1,6 +1,6 @@
 /*******************************************************************************
  * File        : Account.h
- * Author      : Your Name
+ * Author      : samar salah 
  * Date        : 27/07/2026
  * Description : Abstract base class representing a generic bank account.
  *******************************************************************************/
