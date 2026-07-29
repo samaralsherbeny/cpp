@@ -10,6 +10,7 @@
 #include "CheckingAccount.h"
 #include <fstream>
 #include <iostream>
+#include "Account.h"
 using namespace std;
 
 /*******************************************************************************
@@ -134,6 +135,13 @@ void Bank::saveToFile() {
     for (auto acc : accounts) {
         file << acc->getType() << "," << acc->save() << endl;
     }
+}
+bool Bank::idExists(int id) {
+    for (auto acc : accounts) {
+        if (acc->getId() == id)
+            return true;
+    }
+    return false;
 }
 
 /*******************************************************************************
