@@ -1,6 +1,6 @@
 /*******************************************************************************
  * File        : Transaction.cpp
- * Author      : Your Name
+ * Author      : samar salah 
  * Date        : 29/07/2026
  * Description : Implementation of the Transaction class member functions.
  *******************************************************************************/
