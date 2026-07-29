@@ -1,6 +1,6 @@
 /*******************************************************************************
  * File        : SavingsAccount.h
- * Author      : Your Name
+ * Author      : samar salah 
  * Date        : 28/07/2026
  * Description : Header file for the SavingsAccount class, derived from Account.
  *******************************************************************************/
