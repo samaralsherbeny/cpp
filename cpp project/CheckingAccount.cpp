@@ -1,12 +1,12 @@
 /*******************************************************************************
  * File        : CheckingAccount.cpp
  * Author      : samar salah 
- * Date        : 28/07/2026
+ * Date        : 29/07/2026
  * Description : Implementation of the CheckingAccount class member functions.
  *******************************************************************************/
 
 #include "CheckingAccount.h"
-#include <sstream>
+#include <stdexcept>
 
  /*******************************************************************************
   * Function    : CheckingAccount
@@ -14,15 +14,35 @@
   *               Account base class constructor.
   *
   * Parameters  :
-  *   id      - Unique identifier for the account.
-  *   owner   - Name of the account holder.
-  *   balance - Initial balance amount.
+  *   i - Unique identifier for the account.
+  *   n - Account holder's name.
+  *   b - Initial balance amount.
   *
   * Returns     : None.
   *******************************************************************************/
-CheckingAccount::CheckingAccount(string id, string owner, double balance)
-    : Account(id, owner, balance)
-{
+CheckingAccount::CheckingAccount(int i, string n, double b)
+    : Account(i, n, b) {
+}
+
+/*******************************************************************************
+ * Function    : withdraw
+ * Description : Withdraws a specified amount from the checking account. Throws
+ *               an invalid_argument exception if the amount is less than or
+ *               equal to zero, or if funds are insufficient.
+ *
+ * Parameters  :
+ *   amount - The monetary amount to withdraw.
+ *
+ * Returns     : void
+ *******************************************************************************/
+void CheckingAccount::withdraw(double amount) {
+    if (amount <= 0)
+        throw invalid_argument("Invalid amount");
+
+    if (balance - amount < 0)
+        throw invalid_argument("Not enough money");
+
+    balance -= amount;
 }
 
 /*******************************************************************************
@@ -33,27 +53,6 @@ CheckingAccount::CheckingAccount(string id, string owner, double balance)
  *
  * Returns     : string - "Checking"
  *******************************************************************************/
-string CheckingAccount::getType() const
-{
+string CheckingAccount::getType() {
     return "Checking";
-}
-
-/*******************************************************************************
- * Function    : saveData
- * Description : Serializes checking account data into a comma-separated string format.
- *
- * Parameters  : None.
- *
- * Returns     : string - Formatted account details (Type, ID, Owner, Balance).
- *******************************************************************************/
-string CheckingAccount::saveData() const
-{
-    stringstream ss;
-
-    ss << "Checking,"
-        << id << ","
-        << owner << ","
-        << balance;
-
-    return ss.str();
 }
