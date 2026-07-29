@@ -1,6 +1,6 @@
 /*******************************************************************************
  * File        : Transaction.h
- * Author      : Your Name
+ * Author      : samar salah 
  * Date        : 29/07/2026
  * Description : Header file for the Transaction class, representing a record 
  *               of an account transaction.
