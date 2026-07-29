@@ -34,7 +34,7 @@ Account::Account(int i, string n, double b) {
  *
  * Returns     : int - The account ID.
  *******************************************************************************/
-int Account::getId() {
+int Account::getId()const {
     return id;
 }
 
@@ -46,7 +46,7 @@ int Account::getId() {
  *
  * Returns     : string - The account holder's name.
  *******************************************************************************/
-string Account::getName() {
+string Account::getName()const {
     return name;
 }
 
@@ -58,7 +58,7 @@ string Account::getName() {
  *
  * Returns     : double - The current balance.
  *******************************************************************************/
-double Account::getBalance() {
+double Account::getBalance()const {
     return balance;
 }
 
