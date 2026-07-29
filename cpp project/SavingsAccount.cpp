@@ -1,12 +1,12 @@
 /*******************************************************************************
  * File        : SavingsAccount.cpp
  * Author      : samar salah 
- * Date        : 28/07/2026
+ * Date        : 29/07/2026
  * Description : Implementation of the SavingsAccount class member functions.
  *******************************************************************************/
 
 #include "SavingsAccount.h"
-#include <sstream>
+#include <stdexcept>
 
  /*******************************************************************************
   * Function    : SavingsAccount
@@ -14,16 +14,32 @@
   *               Account base class constructor.
   *
   * Parameters  :
-  *   id      - Unique identifier for the account.
-  *   owner   - Name of the account holder.
-  *   balance - Initial balance amount.
+  *   i - Unique identifier for the account.
+  *   n - Account holder's name.
+  *   b - Initial balance amount.
   *
   * Returns     : None.
   *******************************************************************************/
-SavingsAccount::SavingsAccount(string id, string owner, double balance)
-    : Account(id, owner, balance)
-{
+SavingsAccount::SavingsAccount(int i, string n, double b)
+    : Account(i, n, b) {
+}
 
+/*******************************************************************************
+ * Function    : withdraw
+ * Description : Withdraws a specified amount from the savings account. Throws
+ *               an invalid_argument exception if the amount is less than or
+ *               equal to zero, or exceeds the current balance.
+ *
+ * Parameters  :
+ *   amount - The monetary amount to withdraw.
+ *
+ * Returns     : void
+ *******************************************************************************/
+void SavingsAccount::withdraw(double amount) {
+    if (amount <= 0 || amount > balance)
+        throw invalid_argument("Invalid withdraw");
+
+    balance -= amount;
 }
 
 /*******************************************************************************
@@ -34,27 +50,6 @@ SavingsAccount::SavingsAccount(string id, string owner, double balance)
  *
  * Returns     : string - "Savings"
  *******************************************************************************/
-string SavingsAccount::getType() const
-{
+string SavingsAccount::getType() {
     return "Savings";
-}
-
-/*******************************************************************************
- * Function    : saveData
- * Description : Serializes savings account data into a comma-separated string format.
- *
- * Parameters  : None.
- *
- * Returns     : string - Formatted account details (Type, ID, Owner, Balance).
- *******************************************************************************/
-string SavingsAccount::saveData() const
-{
-    stringstream ss;
-
-    ss << "Savings,"
-        << id << ","
-        << owner << ","
-        << balance;
-
-    return ss.str();
 }
