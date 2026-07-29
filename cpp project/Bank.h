@@ -110,5 +110,7 @@ public:
      * Returns     : void
      *******************************************************************************/
     void loadFromFile();
+
+    bool idExists(int id);
 };
 
