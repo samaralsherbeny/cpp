@@ -1,6 +1,6 @@
 /*******************************************************************************
  * File        : Bank.h
- * Author      : Your Name
+ * Author      : samar salah 
  * Date        : 28/07/2026
  * Description : Header file for the Bank class, which manages multiple bank accounts.
  *******************************************************************************/
