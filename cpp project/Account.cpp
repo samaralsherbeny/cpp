@@ -1,6 +1,6 @@
 /*******************************************************************************
  * File        : Account.cpp
- * Author      : Your Name
+ * Author      : samar salah 
  * Date        : 27/07/2026
  * Description : Implementation of the Account class member functions.
  *******************************************************************************/
