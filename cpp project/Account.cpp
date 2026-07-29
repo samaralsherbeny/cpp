@@ -78,7 +78,7 @@ double Account::getBalance() const
 void Account::deposit(double amount)
 {
     if (amount <= 0)
-        throw invalid_argument("Invalid deposit amount.");
+        throw invalid_argument("Amount must be greater than zero..");
 
     balance += amount;
 }
@@ -96,7 +96,7 @@ void Account::deposit(double amount)
 bool Account::withdraw(double amount)
 {
     if (amount <= 0)
-        throw invalid_argument("Invalid withdrawal amount.");
+        throw invalid_argument("Amount must be greater than zero.");
 
     if (amount > balance)
         return false;
