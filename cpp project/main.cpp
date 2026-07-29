@@ -55,6 +55,9 @@ int main() {
 
                 cout << "Enter ID: ";
                 cin >> id;
+                if (bank.idExists(id)) {
+                    throw runtime_error("Account ID already exists!");
+                }
 
                 cout << "Enter Name: ";
                 getline(cin >> ws, name);
@@ -65,10 +68,12 @@ int main() {
                 cout << "Enter Type (Savings / Checking): ";
                 cin >> type;
 
-                if (type == "Savings")
+                if (type == "Savings" || type == "savings")
                     bank.addAccount(make_shared<SavingsAccount>(id, name, balance));
-                else
+                else if (type == "Checking" || type == "checking")
                     bank.addAccount(make_shared<CheckingAccount>(id, name, balance));
+                else
+                    throw runtime_error("Invalid type!");
 
                 cout << " Account created successfully!\n";
             }
