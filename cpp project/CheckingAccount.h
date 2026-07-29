@@ -8,6 +8,9 @@
 #pragma once
 
 #include "Account.h"
+#include <string>
+
+using namespace std;
 
  /*******************************************************************************
   * Class       : CheckingAccount
