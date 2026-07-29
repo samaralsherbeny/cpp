@@ -1,53 +1,51 @@
 /*******************************************************************************
  * File        : SavingsAccount.h
  * Author      : samar salah 
- * Date        : 28/07/2026
+ * Date        : 29/07/2026
  * Description : Header file for the SavingsAccount class, derived from Account.
  *******************************************************************************/
 
 #pragma once
-
 #include "Account.h"
-#include <string>
-using namespace std;
 
-/*******************************************************************************
- * Class       : SavingsAccount
- * Description : Represents a savings account object derived from the Account base class.
- *******************************************************************************/
-class SavingsAccount : public Account
-{
+ /*******************************************************************************
+  * Class       : SavingsAccount
+  * Description : Represents a savings account object derived from the Account base class.
+  *******************************************************************************/
+class SavingsAccount : public Account {
 public:
     /*******************************************************************************
      * Function    : SavingsAccount
      * Description : Constructor to initialize a SavingsAccount instance.
-     * 
-     * Parameters  : 
-     *   id      - Unique identifier for the account.
-     *   owner   - Name of the account holder.
-     *   balance - Initial balance amount.
-     * 
+     *
+     * Parameters  :
+     *   i - Unique identifier for the account.
+     *   n - Account holder's name.
+     *   b - Initial balance amount.
+     *
      * Returns     : None.
      *******************************************************************************/
-    SavingsAccount(string id, string owner, double balance);
+    SavingsAccount(int i, string n, double b);
+
+    /*******************************************************************************
+     * Function    : withdraw
+     * Description : Withdraws a specified amount from the savings account.
+     *
+     * Parameters  :
+     *   amount - The monetary amount to withdraw.
+     *
+     * Returns     : void
+     *******************************************************************************/
+    void withdraw(double amount);
 
     /*******************************************************************************
      * Function    : getType
-     * Description : Returns the type of the account ("Savings Account").
-     * 
+     * Description : Returns the type of the account ("Savings").
+     *
      * Parameters  : None.
-     * 
+     *
      * Returns     : string - The string representing the account type.
      *******************************************************************************/
-    string getType() const override;
-
-    /*******************************************************************************
-     * Function    : saveData
-     * Description : Formats and returns the savings account data for saving/storage.
-     * 
-     * Parameters  : None.
-     * 
-     * Returns     : string - Formatted string containing account details.
-     *******************************************************************************/
-    string saveData() const override;
+    string getType();
 };
+
