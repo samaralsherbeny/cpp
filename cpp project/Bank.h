@@ -1,154 +1,114 @@
 /*******************************************************************************
  * File        : Bank.h
- * Author      : samar salah 
- * Date        : 28/07/2026
- * Description : Header file for the Bank class, which manages multiple bank accounts.
+ * Author      : samar salah
+ * Date        : 29/07/2026
+ * Description : Header file for the Bank class, managing a collection of bank
+ *               accounts and their operations.
  *******************************************************************************/
+
 #pragma once
 
 #include <vector>
 #include <memory>
-#include <string>
 #include "Account.h"
 
-using namespace std;
-
-/*******************************************************************************
- * Class       : Bank
- * Description : Manages a collection of accounts, supporting operations like
- *               creation, deposits, withdrawals, transfers, and file persistence.
- *******************************************************************************/
-class Bank
-{
+ /*******************************************************************************
+  * Class       : Bank
+  * Description : Manages multiple accounts, allowing creation, retrieval,
+  *               financial transactions, display, and file storage/retrieval.
+  *******************************************************************************/
+class Bank {
 private:
     vector<shared_ptr<Account>> accounts;
 
+public:
     /*******************************************************************************
-     * Function    : findAccount
-     * Description : Helper function to search for an account by its unique ID.
+     * Function    : addAccount
+     * Description : Adds a new account pointer to the bank's account repository.
      *
      * Parameters  :
-     *   id - The unique account ID to search for.
+     *   acc - Shared pointer to the account object being added.
+     *
+     * Returns     : void
+     *******************************************************************************/
+    void addAccount(shared_ptr<Account> acc);
+
+    /*******************************************************************************
+     * Function    : findAccount
+     * Description : Searches for an account by its unique integer ID.
+     *
+     * Parameters  :
+     *   id - Unique identifier of the target account.
      *
      * Returns     : shared_ptr<Account> - Pointer to the account if found, or nullptr.
      *******************************************************************************/
-    shared_ptr<Account> findAccount(const string& id);
-
-public:
-    /*******************************************************************************
-     * Function    : Bank
-     * Description : Default constructor for initializing a Bank object.
-     *
-     * Parameters  : None.
-     *
-     * Returns     : None.
-     *******************************************************************************/
-    Bank();
-
-    /*******************************************************************************
-     * Function    : createSavingsAccount
-     * Description : Creates a new SavingsAccount and adds it to the system.
-     *
-     * Parameters  :
-     *   id      - Unique identifier for the new savings account.
-     *   owner   - Name of the account holder.
-     *   balance - Initial balance.
-     *
-     * Returns     : void
-     *******************************************************************************/
-    void createSavingsAccount(string id, string owner, double balance);
-
-    /*******************************************************************************
-     * Function    : createCheckingAccount
-     * Description : Creates a new CheckingAccount and adds it to the system.
-     *
-     * Parameters  :
-     *   id      - Unique identifier for the new checking account.
-     *   owner   - Name of the account holder.
-     *   balance - Initial balance.
-     *
-     * Returns     : void
-     *******************************************************************************/
-    void createCheckingAccount(string id, string owner, double balance);
+    shared_ptr<Account> findAccount(int id);
 
     /*******************************************************************************
      * Function    : deposit
-     * Description : Deposits money into a specified account.
+     * Description : Deposits a specified amount into the account with the given ID.
      *
      * Parameters  :
      *   id     - Unique identifier of the target account.
-     *   amount - The amount of money to deposit.
+     *   amount - Monetary amount to deposit.
      *
      * Returns     : void
      *******************************************************************************/
-    void deposit(string id, double amount);
+    void deposit(int id, double amount);
 
     /*******************************************************************************
      * Function    : withdraw
-     * Description : Withdraws money from a specified account.
+     * Description : Withdraws a specified amount from the account with the given ID.
      *
      * Parameters  :
      *   id     - Unique identifier of the target account.
-     *   amount - The amount of money to withdraw.
+     *   amount - Monetary amount to withdraw.
      *
      * Returns     : void
      *******************************************************************************/
-    void withdraw(string id, double amount);
+    void withdraw(int id, double amount);
 
     /*******************************************************************************
      * Function    : transfer
-     * Description : Transfers funds from one account to another.
+     * Description : Transfers funds from a source account to a destination account.
      *
      * Parameters  :
-     *   fromId - ID of the account money is withdrawn from.
-     *   toId   - ID of the account money is deposited to.
-     *   amount - The amount of money to transfer.
+     *   from   - ID of the account being debited.
+     *   to     - ID of the account receiving the funds.
+     *   amount - Monetary amount to transfer.
      *
      * Returns     : void
      *******************************************************************************/
-    void transfer(string fromId, string toId, double amount);
+    void transfer(int from, int to, double amount);
 
     /*******************************************************************************
-     * Function    : displayAccounts
-     * Description : Prints the details of all accounts currently managed by the bank.
+     * Function    : showAccounts
+     * Description : Displays information for all accounts managed by the bank.
      *
      * Parameters  : None.
      *
      * Returns     : void
      *******************************************************************************/
-    void displayAccounts() const;
+    void showAccounts();
 
     /*******************************************************************************
-     * Function    : loadAccounts
-     * Description : Loads account data from a file into memory.
+     * Function    : saveToFile
+     * Description : Saves all managed account data to a file for persistent storage.
      *
-     * Parameters  :
-     *   filename - Name or path of the file to load data from.
+     * Parameters  : None.
      *
      * Returns     : void
      *******************************************************************************/
-    void loadAccounts(const string& filename);
+    void saveToFile();
 
     /*******************************************************************************
-     * Function    : saveAccounts
-     * Description : Saves all managed account data to a file for persistence.
+     * Function    : loadFromFile
+     * Description : Loads stored account records from a file into memory.
      *
-     * Parameters  :
-     *   filename - Name or path of the destination file.
+     * Parameters  : None.
      *
      * Returns     : void
      *******************************************************************************/
-    void saveAccounts(const string& filename) const;
-
-    /*******************************************************************************
-     * Function    : logTransaction
-     * Description : Logs a transaction or activity message to a file or log target.
-     *
-     * Parameters  :
-     *   message - Description of the transaction to record.
-     *
-     * Returns     : void
-     *******************************************************************************/
-    void logTransaction(const string& message);
+    void loadFromFile();
 };
 
