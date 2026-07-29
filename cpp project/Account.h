@@ -1,113 +1,89 @@
 /*******************************************************************************
  * File        : Account.h
  * Author      : samar salah 
- * Date        : 27/07/2026
- * Description : Abstract base class representing a generic bank account.
+ * Date        : 29/07/2026
+ * Description : Abstract base class header for bank accounts.
  *******************************************************************************/
+#pragma once
 
-#pragma once 
-#define ACCOUNT_H 
 #include <iostream>
-#include <string>
 using namespace std;
+
 /*******************************************************************************
  * Class       : Account
- * Description : Abstract class (cannot be instantiated directly).
- *               Serves as a blueprint for creating specific account objects.
+ * Description : Abstract base class representing a generic bank account.
  *******************************************************************************/
-
-class Account
-{
-protected:// accesseble to derived classes to access the members of the base class
-    string id;
-    string owner;
+class Account {
+protected:
+    int id;
+    string name;
     double balance;
 
-public:// accessible to all classes
-
+public:
     /*******************************************************************************
      * Function    : Account
-     * Description : Constructor to initialize the values of the account object.
+     * Description : Parameterized constructor to initialize account attributes.
      *
      * Parameters  :
-     *   id      - Unique identifier for the account.
-     *   owner   - Name of the account holder.
-     *   balance - Initial balance amount.
+     *   i - Unique identifier for the account.
+     *   n - Account holder's name.
+     *   b - Initial balance.
      *
      * Returns     : None.
      *******************************************************************************/
-
-    Account(string id, string owner, double balance);
-
-    /*******************************************************************************
-     * Function    : ~Account
-     * Description : Virtual destructor to avoid resource leaks when deleting derived objects.
-     *
-     * Parameters  : None.
-     *
-     * Returns     : None.
-     *******************************************************************************/
-
-    virtual ~Account() {}
+    Account(int i, string n, double b);
 
     /*******************************************************************************
      * Function    : getId
-     * Description : Getter function to return the account ID.
+     * Description : Getter function to retrieve the account ID.
      *
      * Parameters  : None.
      *
-     * Returns     : string - The account ID.
+     * Returns     : int - Account ID.
      *******************************************************************************/
-
-    string getId() const;
+    int getId();
 
     /*******************************************************************************
-     * Function    : getOwner
-     * Description : Getter function to return the owner's name.
+     * Function    : getName
+     * Description : Getter function to retrieve the account holder's name.
      *
      * Parameters  : None.
      *
-     * Returns     : string - The owner's name.
+     * Returns     : string - Account holder's name.
      *******************************************************************************/
-
-    string getOwner() const;
+    string getName();
 
     /*******************************************************************************
      * Function    : getBalance
-     * Description : Getter function to return the current balance.
+     * Description : Getter function to retrieve the current account balance.
      *
      * Parameters  : None.
      *
-     * Returns     : double - The account balance.
+     * Returns     : double - Current balance.
      *******************************************************************************/
-
-    double getBalance() const;
+    double getBalance();
 
     /*******************************************************************************
      * Function    : deposit
-     * Description : Virtual function that adds money to the account balance.
-     *               Can be overridden by derived classes.
+     * Description : Deposits a specified amount into the account.
      *
      * Parameters  :
-     *   amount - The amount of money to deposit.
+     *   amount - The monetary amount to deposit.
      *
      * Returns     : void
      *******************************************************************************/
-
-    virtual void deposit(double amount);
+    void deposit(double amount);
 
     /*******************************************************************************
      * Function    : withdraw
-     * Description : Virtual function that subtracts money from the account balance.
-     *               Can be overridden by derived classes.
+     * Description : Pure virtual function to withdraw funds from the account.
      *
      * Parameters  :
-     *   amount - The amount of money to withdraw.
+     *   amount - The monetary amount to withdraw.
      *
-     * Returns     : bool - True if withdrawal was successful, false otherwise.
-	 *******************************************************************************/
-
-    virtual bool withdraw(double amount);
+     * Returns     : void
+     *******************************************************************************/
+    virtual void withdraw(double amount) = 0;
 
     /*******************************************************************************
      * Function    : getType
@@ -115,32 +91,17 @@ public:// accessible to all classes
      *
      * Parameters  : None.
      *
-     * Returns     : string - Name/type of the derived account.
+     * Returns     : string - Name of the account type.
      *******************************************************************************/
-
-	virtual string getType() const = 0;
-
-    /*******************************************************************************
-     * Function    : display
-     * Description : Virtual function to print account details.
-     *               Can be overridden by derived classes for custom display.
-     *
-     * Parameters  : None.
-     *
-     * Returns     : void
-	 *******************************************************************************/
-
-	virtual void display() const;
+    virtual string getType() = 0;
 
     /*******************************************************************************
-     * Function    : saveData
-     * Description : Pure virtual function to save account data to a string.
-     *               Must be implemented by derived classes.
+     * Function    : save
+     * Description : Virtual function to serialize account details for file persistence.
      *
      * Parameters  : None.
      *
      * Returns     : string - Formatted account data for saving.
-	 *******************************************************************************/
-
-	virtual string saveData() const = 0;
+     *******************************************************************************/
+    virtual string save(); // for file
 };
