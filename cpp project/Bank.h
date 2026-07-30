@@ -12,11 +12,11 @@
 #include <memory>
 #include "Account.h"
 
- /*******************************************************************************
-  * Class       : Bank
-  * Description : Manages multiple accounts, allowing creation, retrieval,
-  *               financial transactions, display, and file storage/retrieval.
-  *******************************************************************************/
+/*******************************************************************************
+ * Class       : Bank
+ * Description : Manages multiple accounts, allowing creation, retrieval,
+ *               financial transactions, display, and file storage/retrieval.
+ *******************************************************************************/
 class Bank {
 private:
     vector<shared_ptr<Account>> accounts;
@@ -40,7 +40,7 @@ public:
      * Parameters  :
      *   id - Unique identifier of the target account.
      *
-     * Returns     : shared_ptr<Account> - Pointer to the account if found, or nullptr.
+     * Returns     : shared_ptr<Account> - Pointer to the matching account.
      *******************************************************************************/
     shared_ptr<Account> findAccount(int id);
 
@@ -111,6 +111,15 @@ public:
      *******************************************************************************/
     void loadFromFile();
 
+    /*******************************************************************************
+     * Function    : idExists
+     * Description : Checks whether an account with the specified ID exists.
+     *
+     * Parameters  :
+     *   id - Unique identifier to check.
+     *
+     * Returns     : bool - True if the ID exists, false otherwise.
+     *******************************************************************************/
     bool idExists(int id);
 };
 
