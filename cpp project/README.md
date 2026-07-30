@@ -1,6 +1,28 @@
-# 💳 Simple Bank System (C++)
+# 🏦 Banking System (OOP-Based Project)
 
-A console-based banking system written in C++ that allows users to create and manage bank accounts, perform transactions, and store data persistently using file handling.
+## 📌 Overview
+This project is a simple banking system implemented using Object-Oriented Programming (OOP) concepts in C++. It supports account management, transactions, file handling, and exception handling.
+
+---
+
+## 🧠 OOP Concepts Used
+
+### 🔹 Encapsulation
+- Account data (`id`, `name`, `balance`) is kept private.
+- Access is controlled through public getter methods.
+- Ensures data safety and controlled modification.
+
+### 🔹 Inheritance
+- `CheckingAccount` and `SavingsAccount` inherit from the base class `Account`.
+- Promotes code reuse and logical hierarchy.
+
+### 🔹 Polymorphism
+- Functions like `withdraw()` and `getType()` are overridden in derived classes.
+- Allows different behavior depending on account type.
+
+### 🔹 Abstraction
+- `Account` is an abstract class.
+- Defines a common structure while hiding implementation details.
 
 ---
 
@@ -33,31 +55,44 @@ A console-based banking system written in C++ that allows users to create and ma
 
 ---
 
-## ⚙️ Requirements
+### 📄 File Descriptions
 
-- C++ Compiler (supports C++11 or higher)
-  - g++ (MinGW / Linux / Mac)
-  - OR Visual Studio (recommended on Windows)
+- **main.cpp**  
+  Entry point of the program. Handles user interaction.
+
+- **Account**  
+  Abstract base class containing common properties and methods.
+
+- **CheckingAccount / SavingsAccount**  
+  Derived classes implementing specific behaviors.
+
+- **Bank**  
+  Manages all accounts and operations like deposit, withdraw, and transfer.
+
+- **Exceptions.h**  
+  Contains custom exception classes.
+
+- **data.txt**  
+  Stores account data for persistence.
 
 ---
 
-## 🛠️ Build Instructions
+## ⚠️ Exception Handling
 
-### 🔹 Using g++ (Terminal / VS Code)
+The system handles the following exceptions:
 
-1. Open terminal in project folder
+### 🔴 1. Insufficient Balance
+- Exception: `InsufficientBalanceException`
+- Triggered when withdrawing more than available balance.
 
-2. Compile all files:
+### 🔴 2. Account Not Found
+- Exception: `AccountNotFoundException`
+- Triggered when an account ID does not exist.
 
-```bash
-g++ main.cpp Bank.cpp Account.cpp SavingsAccount.cpp CheckingAccount.cpp -o bank
-```
+### 🔴 3. Duplicate Account ID
+- Exception: `DuplicateIDException`
+- Triggered when trying to create an account with an existing ID.
 
-3. Run the program:
-
-```bash
-./bank
-```
 ---
 
 ## ▶️ How to Use
@@ -105,6 +140,12 @@ The system uses custom exceptions:
 All errors are handled safely using `try/catch`.
 
 ---
+
+## 🔷 UML Diagram 
+
+<img width="1438" height="866" alt="image" src="https://github.com/user-attachments/assets/5c215160-123f-4351-9766-78c205bb4c9c" />
+
+---
 ## ⭐ Notes
 
 This project demonstrates:
@@ -113,3 +154,9 @@ This project demonstrates:
 - Exception Handling
 - Smart Pointers (`shared_ptr`)
 - Clean and modular code structure
+
+## 🚀 Conclusion
+
+This project demonstrates the use of core OOP principles to build a modular, maintainable, and scalable banking system. It also integrates file handling and exception handling to ensure reliability.
+
+
