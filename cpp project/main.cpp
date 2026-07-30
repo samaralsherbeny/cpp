@@ -12,7 +12,7 @@
 #include "SavingsAccount.h"
 #include "CheckingAccount.h"
 #include<string>
-
+#include "Exceptions.h"
 using namespace std;
 
 /*******************************************************************************
@@ -152,5 +152,11 @@ int main() {
 
     } while (choice != 0);
 
+    try {
+        bank.withdraw(1, 2000);
+    }
+    catch (const InsufficientBalanceException& e) {
+        cout << e.what() << endl;
+    }
     return 0;
 }
