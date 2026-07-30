@@ -1,69 +1,115 @@
-🏦 Bank Management System (C++)
-📌 Overview
-This project is a Bank Management System implemented in C++ using Object-Oriented Programming (OOP) principles.  
-It simulates real-world banking operations such as account creation, deposits, withdrawals, transfers, and file storage.
-The system is designed with abstraction, inheritance, polymorphism, and smart pointers to ensure clean and maintainable code.
+# 💳 Simple Bank System (C++)
+
+A console-based banking system written in C++ that allows users to create and manage bank accounts, perform transactions, and store data persistently using file handling.
+
 ---
-🎯 Features
-Create new accounts (Checking / Savings)
-Deposit money
-Withdraw money with validation
-Transfer money between accounts
-Prevent duplicate account IDs
-Display all accounts
-Save accounts to file
-Load accounts from file
-Exception handling for invalid operations
+
+## 📌 Features
+
+- Create accounts (Savings / Checking)
+- Deposit money
+- Withdraw money
+- Transfer between accounts
+- Display all accounts
+- Persistent storage using file system
+- Exception handling for:
+  - Duplicate account IDs
+  - Account not found
+  - Insufficient balance
+
 ---
-🧱 Project Structure
-cpp project/
-│
-├── Account.h / Account.cpp
-├── CheckingAccount.h / CheckingAccount.cpp
-├── SavingsAccount.h / SavingsAccount.cpp
-├── Bank.h / Bank.cpp
+
+## 🏗️ Project Structure
+
+```
 ├── main.cpp
-└── data.txt
+├── Bank.h / Bank.cpp
+├── Account.h / Account.cpp
+├── SavingsAccount.h / SavingsAccount.cpp
+├── CheckingAccount.h / CheckingAccount.cpp
+├── Exceptions.h
+├── data.txt (auto-generated)
+```
+
 ---
-🧩 OOP Concepts Used
-Abstraction
-Account is an abstract base class:
-virtual void withdraw(double amount) = 0;
-virtual string getType() const = 0;
-Inheritance
-CheckingAccount and SavingsAccount inherit from Account.
-Polymorphism
-Using shared_ptr<Account> for dynamic behavior.
-Encapsulation
-Data is protected and accessed using getters.
+
+## ⚙️ Requirements
+
+- C++ Compiler (supports C++11 or higher)
+  - g++ (MinGW / Linux / Mac)
+  - OR Visual Studio (recommended on Windows)
+
 ---
-⚙️ Build & Run Instructions
-Requirements
-C++ compiler (g++)
-C++11 or later
-Compile
-g++ -std=c++11 main.cpp Account.cpp Bank.cpp CheckingAccount.cpp SavingsAccount.cpp -o bank
-Run
+
+## 🛠️ Build Instructions
+
+### 🔹 Using g++ (Terminal / VS Code)
+
+1. Open terminal in project folder
+
+2. Compile all files:
+
+```bash
+g++ main.cpp Bank.cpp Account.cpp SavingsAccount.cpp CheckingAccount.cpp -o bank
+```
+
+3. Run the program:
+
+```bash
 ./bank
+```
 ---
-🧪 Validation Rules
-Deposit: amount > 0  
-Withdraw: amount > 0 and <= balance  
-Create Account: unique ID, name not empty, balance >= 0  
-Transfer: valid accounts and amount > 0
+
+## ▶️ How to Use
+
+After running the program, you will see a menu:
+
+```
+1. Create Account
+2. Deposit
+3. Withdraw
+4. Transfer
+5. Show Accounts
+0. Exit
+```
+
+### Example Usage
+
+- Create account → choose type (Savings / Checking)  
+- Deposit money → enter ID + amount  
+- Withdraw → system checks balance automatically  
+- Transfer → moves money between accounts  
+
 ---
-💾 File Handling
-Data is stored in data.txt
-Example:
-Checking,1,Ali,1000
-Savings,2,Sara,2000
-Program loads on start and saves before exit.
+
+## 💾 Data Persistence
+
+- All accounts are saved in:
+  ```
+  data.txt
+  ```
+- Data is automatically:
+  - Loaded at program start  
+  - Saved when exiting  
+
 ---
-⚠️ Error Handling
-Uses exceptions:
-invalid_argument
-runtime_error
-Example:
-if (amount <= 0)
-throw invalid_argument("Invalid deposit");
+
+## ⚠️ Error Handling
+
+The system uses custom exceptions:
+
+- `DuplicateIDException`
+- `AccountNotFoundException`
+- `InsufficientBalanceException`
+
+All errors are handled safely using `try/catch`.
+
 ---
+## ⭐ Notes
+
+This project demonstrates:
+- Object-Oriented Programming (OOP)
+- File Handling
+- Exception Handling
+- Smart Pointers (`shared_ptr`)
+- Clean and modular code structure
