@@ -7,7 +7,7 @@
 
 #include "SavingsAccount.h"
 #include <stdexcept>
-
+#include "Exceptions.h"
  /*******************************************************************************
   * Function    : SavingsAccount
   * Description : Constructor for SavingsAccount that passes parameters to the
@@ -37,7 +37,7 @@ SavingsAccount::SavingsAccount(int i, string n, double b)
  *******************************************************************************/
 void SavingsAccount::withdraw(double amount) {
     if (amount <= 0 || amount > balance)
-        throw invalid_argument("Invalid withdraw");
+        throw InsufficientBalanceException();
 
     balance -= amount;
 }
